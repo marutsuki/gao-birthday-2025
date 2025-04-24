@@ -76,8 +76,8 @@
   0% {
     transform: translate3d(0, 0, 0) rotate3d(1, 0, 0, 0deg);
   }
-  2% {
-    transform: translate3d(-20px, 0, 0) rotate3d(1, 0, 0, 0deg);
+  3.8% {
+    transform: translate3d(0, 0, 0) rotate3d(1, 0, 0, 0deg);
   }
   4% {
     transform: translate3d(-40px, 0, 0) rotate3d(1, 0, 0, 0deg);

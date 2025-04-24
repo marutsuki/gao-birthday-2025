@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./index.css";
+import clsx from "clsx";
 
 const audio = new Audio("/nippon.mp3");
 
 const bgm0 = new Audio("/sailing.mp3");
+// const bgm1 = new Audio("/shutup.mp3");
 const bgm2 = new Audio("/bgm2.mp3");
 const bgm3 = new Audio("/kanden.mp3");
 const bgm4 = new Audio("/p_ah.mp3");
@@ -15,6 +17,12 @@ function App() {
   const [revealJoke, setRevealJoke] = useState(false);
   const [revealJoke2, setRevealJoke2] = useState(false);
   const [showBingChilling, setShowBingChilling] = useState(false);
+  const [showSusSection, setShowSusSection] = useState(false);
+
+  const vid1 = useRef<HTMLVideoElement>(null);
+  const vid2 = useRef<HTMLVideoElement>(null);
+  const vid3 = useRef<HTMLVideoElement>(null);
+  const happyvid = useRef<HTMLVideoElement>(null);
 
   const section0Ref = useRef<HTMLDivElement>(null);
   const section1Ref = useRef<HTMLDivElement>(null);
@@ -35,6 +43,9 @@ function App() {
   const section16Ref = useRef<HTMLDivElement>(null);
   const section17Ref = useRef<HTMLDivElement>(null);
   const section18Ref = useRef<HTMLDivElement>(null);
+  const section19Ref = useRef<HTMLDivElement>(null);
+  const section20Ref = useRef<HTMLDivElement>(null);
+  const section21Ref = useRef<HTMLDivElement>(null);
 
   // Function to scroll to the next section
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
@@ -64,7 +75,7 @@ function App() {
   };
 
   const shake = () => {
-    const screen = section17Ref.current;
+    const screen = section18Ref.current;
     if (screen) {
       setTimeout(() => {
         screen.style.animation = "spin 0.3s";
@@ -72,6 +83,18 @@ function App() {
       setTimeout(() => {
         screen.style.animation = "punch 8s forwards";
       }, 11500);
+    }
+  };
+
+  const playVids = () => {
+    vid1.current?.play();
+    vid2.current?.play();
+    vid3.current?.play();
+  };
+
+  const playVid = (vid: React.RefObject<HTMLVideoElement | null>) => {
+    if (vid.current) {
+      vid.current.play();
     }
   };
 
@@ -151,7 +174,10 @@ function App() {
           <button
             className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
-            onClick={() => scrollToSection(section3Ref)}
+            onClick={() => {
+              playVids();
+              scrollToSection(section3Ref);
+            }}
           >
             Let's Celebrate!
           </button>
@@ -167,19 +193,19 @@ function App() {
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="w-fit max-w-full text-center">
-          <h2>Japan</h2>
+          <h2 className="text-xl">Japan</h2>
           <div
             className="bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
                         transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative flex gap-4"
           >
             <div className="absolute -inset-0.5 bg-neon-gradient -z-10 blur-lg opacity-70 rounded-xl"></div>
-            <video className="max-h-96" controls>
+            <video ref={vid1} className="max-h-96" controls>
               <source src="/kevin_dancing.mp4" type="video/mp4" />
             </video>
-            <video className="max-h-96" controls>
+            <video ref={vid2} className="max-h-96" controls>
               <source src="/washing_feet.mp4" type="video/mp4" />
             </video>
-            <video className="max-h-96" controls>
+            <video ref={vid3} className="max-h-96" controls>
               <source src="/fapping.mp4" type="video/mp4" />
             </video>
           </div>
@@ -281,10 +307,22 @@ function App() {
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="w-fit max-w-full text-center">
-          <h2>You knew this section was coming</h2>
+          <h2 className="text-neon-purple text-lg">
+            You knew this section was coming
+          </h2>
+          {!showSusSection && (
+            <div>
+              <p>Not safe for work</p>
+              <small>Click to reveal</small>
+            </div>
+          )}
           <div
-            className="bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
-                        transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative flex gap-4"
+            onClick={() => setShowSusSection(!showSusSection)}
+            className={clsx(
+              `bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
+                        transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative flex gap-4 cursor-pointer`,
+              { "blur-lg": !showSusSection }
+            )}
           >
             <img
               src="/aria.jpg"
@@ -320,7 +358,8 @@ function App() {
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="w-fit max-w-full text-center">
-          <h2>why was 7 scared of 8</h2>
+          <h2 className="text-lg">Why was 7 scared of 8?</h2>
+          <small>Click to reveal</small>
           <div
             className="bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
                         transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative"
@@ -360,7 +399,8 @@ function App() {
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="w-fit max-w-full text-center">
-          <h2>who is my boyfriend</h2>
+          <h2 className="text-lg">Who is my boyfriend?</h2>
+          <small>Click to reveal</small>
           <div
             className="bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
                         transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative"
@@ -402,7 +442,7 @@ function App() {
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="w-fit max-w-full text-center">
-          <h2>who is that pokemon!?</h2>
+          <h2>Who is that pokemon!?</h2>
           <div
             className="bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
                      transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative"
@@ -439,7 +479,7 @@ function App() {
       <div className="w-full h-[3px] bg-neon-gradient m-0 shadow-neon"></div>
 
       <section
-        ref={section9Ref}
+        ref={section10Ref}
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="w-fit max-w-full text-center">
@@ -468,7 +508,7 @@ function App() {
           <button
             className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
-            onClick={() => scrollToSection(section10Ref)}
+            onClick={() => scrollToSection(section11Ref)}
           >
             More Memories
           </button>
@@ -478,7 +518,7 @@ function App() {
       <div className="w-full h-[3px] bg-neon-gradient m-0 shadow-neon"></div>
 
       <section
-        ref={section10Ref}
+        ref={section11Ref}
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="w-fit max-w-full text-center">
@@ -495,7 +535,7 @@ function App() {
           <button
             className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer 
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
-            onClick={() => scrollToSection(section11Ref)}
+            onClick={() => scrollToSection(section12Ref)}
           >
             More Memories
           </button>
@@ -505,7 +545,7 @@ function App() {
       <div className="w-full h-[3px] bg-neon-gradient m-0 shadow-neon"></div>
 
       <section
-        ref={section11Ref}
+        ref={section12Ref}
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="w-fit max-w-full text-center">
@@ -522,7 +562,7 @@ function App() {
           <button
             className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
-            onClick={() => scrollToSection(section12Ref)}
+            onClick={() => scrollToSection(section13Ref)}
           >
             More Memories
           </button>
@@ -532,7 +572,7 @@ function App() {
       <div className="w-full h-[3px] bg-neon-gradient m-0 shadow-neon"></div>
 
       <section
-        ref={section12Ref}
+        ref={section13Ref}
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <h2>Click and hold</h2>
@@ -551,7 +591,10 @@ function App() {
         <button
           className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
-          onClick={() => scrollToSection(section13Ref)}
+          onClick={() => {
+            playVid(happyvid);
+            scrollToSection(section14Ref);
+          }}
         >
           More Memories
         </button>
@@ -560,7 +603,7 @@ function App() {
       <div className="w-full h-[3px] bg-neon-gradient m-0 shadow-neon"></div>
 
       <section
-        ref={section13Ref}
+        ref={section14Ref}
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <h1 className="text-4xl md:text-6xl mb-4">HAPPY BIRTHDAY</h1>
@@ -571,10 +614,9 @@ function App() {
                         transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative"
           >
             <div className="absolute -inset-0.5 bg-neon-gradient -z-10 blur-lg opacity-70 rounded-xl"></div>
-            <video controls className="max-h-96">
+            <video ref={happyvid} controls className="max-h-96">
               <source src="/happy.mp4" type="video/mp4" />
             </video>
-            <h2>Click me</h2>
           </div>
           <button
             className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
@@ -583,7 +625,7 @@ function App() {
               bgm0.pause();
               bgm2.play();
               setShowBingChilling(true);
-              scrollToSection(section14Ref);
+              scrollToSection(section15Ref);
             }}
           >
             More Memories
@@ -594,7 +636,7 @@ function App() {
       <div className="w-full h-[3px] bg-neon-gradient m-0 shadow-neon"></div>
 
       <section
-        ref={section14Ref}
+        ref={section15Ref}
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <h1 className="text-4xl md:text-6xl mb-4">
@@ -624,7 +666,7 @@ function App() {
             onClick={() => {
               bgm2.pause();
               bgm3.play();
-              scrollToSection(section15Ref);
+              scrollToSection(section16Ref);
               setShowBingChilling(false);
             }}
           >
@@ -642,7 +684,7 @@ function App() {
       <div className="w-full h-[3px] bg-neon-gradient m-0 shadow-neon"></div>
 
       <section
-        ref={section15Ref}
+        ref={section16Ref}
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <h1 className="text-4xl md:text-6xl mb-4">kevin yonezu</h1>
@@ -669,7 +711,7 @@ function App() {
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
             onClick={() => {
               bgm4.play();
-              scrollToSection(section16Ref);
+              scrollToSection(section17Ref);
             }}
           >
             More Memories
@@ -684,7 +726,7 @@ function App() {
       </section>
 
       <section
-        ref={section16Ref}
+        ref={section17Ref}
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="w-fit max-w-full text-center">
@@ -721,7 +763,7 @@ function App() {
             className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
             onClick={() => {
-              scrollToSection(section17Ref);
+              scrollToSection(section18Ref);
             }}
           >
             More Memories
@@ -732,7 +774,7 @@ function App() {
       <div className="w-full h-[3px] bg-neon-gradient m-0 shadow-neon"></div>
 
       <section
-        ref={section17Ref}
+        ref={section18Ref}
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <h1 className="text-4xl md:text-6xl mb-4">mortal kombat</h1>
@@ -759,7 +801,7 @@ function App() {
       <div className="w-full h-[3px] bg-neon-gradient m-0 shadow-neon"></div>
       {/* Final Section */}
       <section
-        ref={section18Ref}
+        ref={section19Ref}
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="overflow-hidden w-fit max-w-full text-center">
