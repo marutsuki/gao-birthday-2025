@@ -69,6 +69,9 @@ function App() {
       setTimeout(() => {
         screen.style.animation = "spin 0.3s";
       }, 4000);
+      setTimeout(() => {
+        screen.style.animation = "punch 8s forwards";
+      }, 11500);
     }
   };
 
