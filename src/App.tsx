@@ -10,6 +10,10 @@ const bgm2 = new Audio("/bgm2.mp3");
 const bgm3 = new Audio("/kanden.mp3");
 const bgm4 = new Audio("/p_ah.mp3");
 
+const seat = new Audio("/seat.mp3");
+const pokemon = new Audio("/pokemon.mp3");
+const itsgao = new Audio("/itsgao.mp3");
+
 function App() {
   // References for each section
 
@@ -433,7 +437,9 @@ function App() {
           <button
             className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
-            onClick={() => scrollToSection(section8Ref)}
+            onClick={() => {
+              scrollToSection(section8Ref);
+            }}
           >
             More Memories
           </button>
@@ -466,7 +472,7 @@ function App() {
               <button
                 className="rounded-lg border border-transparent px-5 py-2.5 text-base font-medium 
                                bg-dark-surface cursor-pointer transition-all duration-250 relative overflow-hidden"
-                onClick={() => setRevealJoke2(true)}
+                onClick={() => {}}
               >
                 <img
                   src="/kevin.jpg"
@@ -478,7 +484,10 @@ function App() {
           <button
             className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
-            onClick={() => scrollToSection(section9Ref)}
+            onClick={() => {
+              pokemon.play();
+              scrollToSection(section9Ref);
+            }}
           >
             More Memories
           </button>
@@ -494,7 +503,10 @@ function App() {
           <div
             className="bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
                      transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative"
-            onClick={() => setShowForehead(!showForehead)}
+            onClick={() => {
+              itsgao.play();
+              setShowForehead(!showForehead);
+            }}
           >
             {showForehead ? (
               <div>
@@ -610,7 +622,10 @@ function App() {
           <button
             className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
-            onClick={() => scrollToSection(section13Ref)}
+            onClick={() => {
+              seat.play();
+              scrollToSection(section13Ref);
+            }}
           >
             More Memories
           </button>
@@ -678,7 +693,7 @@ function App() {
               bgm0.pause();
               bgm2.play();
               setShowBingChilling(true);
-              glow(bingChillingContainer, 8200, 16000);
+              glow(bingChillingContainer, 8750, 15900);
               doubleboom(section15Ref, 44500);
               scrollToSection(section15Ref);
             }}
