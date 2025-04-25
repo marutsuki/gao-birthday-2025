@@ -4,7 +4,9 @@ import MemorySection from "./MemorySection";
 import clsx from "clsx";
 
 const SusMemorySection: React.FC = () => {
-  const { showSusSection, setShowSusSection } = useAppContext();
+  const { showSusSection, setShowSusSection, audio } = useAppContext();
+
+  const { nice } = audio;
 
   return (
     <MemorySection
@@ -20,7 +22,11 @@ const SusMemorySection: React.FC = () => {
         </div>
       )}
       <div
-        onClick={() => setShowSusSection(!showSusSection)}
+        onClick={() => {
+          setShowSusSection(!showSusSection);
+          if (!nice) return;
+          nice.play();
+        }}
         className={clsx(
           `bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
                   transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative flex gap-4 cursor-pointer`,

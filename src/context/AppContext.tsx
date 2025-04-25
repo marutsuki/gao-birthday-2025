@@ -23,6 +23,8 @@ const audioStore: AudioStore = {
   nice: new Audio("/nice.mp3"),
   curtain: new Audio("/curtain.mp3"),
   nippon: new Audio("/nippon.mp3"),
+  oh: new Audio("/oh.mp3"),
+  micdrop: new Audio("/micdrop.mp3"),
 };
 
 // Define the context type
@@ -156,7 +158,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     const screen = ref.current;
     if (screen) {
       setTimeout(() => {
-        screen.style.animation = "voicecrack 2s forwards";
+        screen.style.animation = "linear voicecrack 1.9s forwards";
       }, timeout);
     }
   };

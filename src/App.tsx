@@ -22,6 +22,7 @@ import FighterSection from "./components/FighterSection";
 import MortalKombatSection from "./components/MortalKombatSection";
 import SoldierSection from "./components/SoldierSection";
 import Footer from "./components/Footer";
+import RoastSection from "./components/RoastSection";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <FighterSection />
         <MortalKombatSection />
         <SoldierSection />
+        <RoastSection />
         <Footer />
       </div>
     </AppProvider>

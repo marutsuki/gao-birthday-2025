@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useAppContext } from "../context/AppContext";
 import MemorySection from "./MemorySection";
 
@@ -11,7 +11,10 @@ const HappyBirthdaySection: React.FC = () => {
     glow,
     doubleboom,
     sectionRefs,
+    voicecrack,
   } = useAppContext();
+
+  const vid = useRef<HTMLDivElement | null>(null);
 
   const { bgm0, bgm2 } = audio;
   const handleButtonClick = () => {
@@ -24,7 +27,7 @@ const HappyBirthdaySection: React.FC = () => {
   };
 
   const handleVideoPlay = () => {
-    glow(sectionRefs[14], 8500, null);
+    voicecrack(vid, 7700);
   };
 
   return (
@@ -36,10 +39,10 @@ const HappyBirthdaySection: React.FC = () => {
       onButtonClick={handleButtonClick}
     >
       <div
+        ref={vid}
         className="bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
                   transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative"
       >
-        <div className="absolute -inset-0.5 bg-neon-gradient -z-10 blur-lg opacity-70 rounded-xl"></div>
         <video
           ref={happyvid}
           controls

@@ -20,8 +20,8 @@ const SoldierSection: React.FC = () => {
     <MemorySection
       sectionIndex={19}
       title=""
-      buttonText="Back to Top"
-      nextSectionIndex={0}
+      buttonText="More Memories"
+      nextSectionIndex={20}
     >
       <div className="overflow-hidden w-fit max-w-full text-center">
         <video
