@@ -13,6 +13,7 @@ const bgm4 = new Audio("/p_ah.mp3");
 const seat = new Audio("/seat.mp3");
 const pokemon = new Audio("/pokemon.mp3");
 const itsgao = new Audio("/itsgao.mp3");
+const soldier = new Audio("/soldier.mp3");
 
 function App() {
   // References for each section
@@ -22,12 +23,14 @@ function App() {
   const [revealJoke2, setRevealJoke2] = useState(false);
   const [showBingChilling, setShowBingChilling] = useState(false);
   const [showSusSection, setShowSusSection] = useState(false);
+  const [soldierMuted, setSoldierMuted] = useState(false);
 
   const vid1 = useRef<HTMLVideoElement>(null);
   const vid2 = useRef<HTMLVideoElement>(null);
   const vid3 = useRef<HTMLVideoElement>(null);
   const happyvid = useRef<HTMLVideoElement>(null);
   const bingChillingContainer = useRef<HTMLDivElement>(null);
+  const soldierVid = useRef<HTMLVideoElement>(null);
 
   const section0Ref = useRef<HTMLDivElement>(null);
   const section1Ref = useRef<HTMLDivElement>(null);
@@ -876,33 +879,25 @@ function App() {
         className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4"
       >
         <div className="overflow-hidden w-fit max-w-full text-center">
-          <h2>Happy Birthday, Friend!</h2>
-          <div
-            className="bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
-                        transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative"
+          <video
+            ref={soldierVid}
+            controls
+            muted={soldierMuted}
+            onPlay={() =>
+              setTimeout(() => {
+                soldier.play();
+                if (soldierVid.current) {
+                  setSoldierMuted(true);
+                }
+              }, 15600)
+            }
           >
-            <div className="absolute -inset-0.5 bg-neon-gradient -z-10 blur-lg opacity-70 rounded-xl"></div>
-            <h3>Here's to Many More Years</h3>
-            <img
-              src="https://source.unsplash.com/random/800x600/?celebration,friends"
-              alt="Celebration"
-              className="max-w-full rounded-lg my-4 shadow-md"
-            />
-            <p>
-              Kevin, your friendship has been one of the greatest gifts in my
-              life. Through all our adventures, inside jokes, and even the
-              occasional disagreements, you've been an amazing friend. Here's to
-              many more years of creating memories together!
-            </p>
-            <p>
-              Wishing you the happiest of birthdays and a year filled with joy,
-              success, and plenty of new stories to add to our collection.
-            </p>
-          </div>
+            <source src="/soldier.mp4" type="video/mp4" />
+          </video>
           <button
             className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold 
                      shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
-            onClick={() => scrollToSection(section1Ref)}
+            onClick={() => scrollToSection(section20Ref)}
           >
             Back to Top
           </button>
