@@ -16,6 +16,7 @@
 
 
   --color-neon-purple: #bb86fc;
+  --color-neon-purple-faded: rgba(187, 134, 252, 0.8);
   --color-neon-blue: #3f51b5;
   --color-dark-bg: #121212;
   --color-dark-surface: #1a1a1a;
@@ -29,6 +30,7 @@
   --animate-fall: fall 5s linear infinite;
 
   --animate-blur: blur 1s linear infinite;
+  --animate-glow : glow 2s linear infinite;
 }
 
 @keyframes fall {
@@ -69,6 +71,93 @@
   }
   100% {
     transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes voicecrack {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  1% {
+    transform: translateY(50px) rotate(30deg);
+  }
+  100% {
+    transform: translateY(50px) rotate(30deg);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+    color: var(--color-neon-purple);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(156, 39, 176, 1);
+    color: var(--color-neon-blue);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+    color: var(--color-neon-purple);
+  }
+}
+
+@keyframes doubleboom {
+  0% {
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+    background: rgba(0, 0, 0, 0);
+    transform: scale(1);
+    color: var(--color-neon-purple);
+  }
+  10% {
+    box-shadow: 0 0 40px rgba(156, 39, 176, 0.7);
+    background: var(--color-neon-purple-faded);
+    transform: scale(1.5);
+    color: var(--color-neon-purple);
+  }
+  20% {
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+    background: rgba(0, 0, 0, 0);
+    transform: scale(1);
+    color: var(--color-neon-purple);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(156, 39, 176, 1);
+    background: rgba(0, 0, 0, 0);
+    transform: scale(1);
+    color: var(--color-neon-blue);
+  }
+  60% {
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+    background: var(--color-neon-purple-faded);
+    transform: scale(1.5);
+    color: var(--color-neon-purple);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+    background: rgba(0, 0, 0, 0);
+    transform: scale(1);
+    color: var(--color-neon-purple);
+  }
+}
+
+@keyframes super-glow {
+  0% {
+    transform: translate3d(0, 0, 0) rotate3d(1, 0, 0, 0deg);
+    background: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+    color: var(--color-neon-purple);
+  }
+  50% {
+    transform: translate3d(0, 0, -50px) rotate3d(1, 0, -0.2, -20deg);
+    background: var(--color-neon-purple-faded);
+    box-shadow: 0 0 40px rgba(156, 39, 176, 1);
+    color: var(--color-neon-blue);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate3d(1, 0, 0, 0deg);
+    background: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+    color: var(--color-neon-purple);
   }
 }
 

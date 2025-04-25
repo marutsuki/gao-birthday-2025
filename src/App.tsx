@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./index.css";
 import clsx from "clsx";
 
@@ -23,6 +23,7 @@ function App() {
   const vid2 = useRef<HTMLVideoElement>(null);
   const vid3 = useRef<HTMLVideoElement>(null);
   const happyvid = useRef<HTMLVideoElement>(null);
+  const bingChillingContainer = useRef<HTMLDivElement>(null);
 
   const section0Ref = useRef<HTMLDivElement>(null);
   const section1Ref = useRef<HTMLDivElement>(null);
@@ -74,6 +75,53 @@ function App() {
     return confetti;
   };
 
+  const voicecrack = (
+    ref: React.RefObject<HTMLDivElement | null>,
+    timeout: number
+  ) => {
+    const screen = ref.current;
+    if (screen) {
+      setTimeout(() => {
+        screen.style.animation = "voicecrack 2s forwards";
+      }, timeout);
+    }
+  };
+
+  const glow = (
+    ref: React.RefObject<HTMLDivElement | null>,
+    timeout: number | null,
+    timeout2: number | null,
+    infinite: boolean = true
+  ) => {
+    const screen = ref.current;
+    if (screen) {
+      if (timeout) {
+        setTimeout(() => {
+          screen.style.animation =
+            "glow 0.4615s " + (infinite ? "infinite" : "forwards");
+        }, timeout);
+      }
+      if (timeout2) {
+        setTimeout(() => {
+          screen.style.animation =
+            "super-glow 0.4615s " + (infinite ? "infinite" : "forwards");
+        }, timeout2);
+      }
+    }
+  };
+
+  const doubleboom = (
+    ref: React.RefObject<HTMLDivElement | null>,
+    timeout: number
+  ) => {
+    const screen = ref.current;
+    if (screen) {
+      setTimeout(() => {
+        screen.style.animation = "doubleboom 0.82s forwards";
+      }, timeout);
+    }
+  };
+
   const shake = () => {
     const screen = section18Ref.current;
     if (screen) {
@@ -99,7 +147,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full overflow-x-hidden">
       {/* Hero Section */}
       <section
         ref={section0Ref}
@@ -614,7 +662,12 @@ function App() {
                         transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative"
           >
             <div className="absolute -inset-0.5 bg-neon-gradient -z-10 blur-lg opacity-70 rounded-xl"></div>
-            <video ref={happyvid} controls className="max-h-96">
+            <video
+              ref={happyvid}
+              controls
+              className="max-h-96"
+              onPlay={() => voicecrack(section14Ref, 8500)}
+            >
               <source src="/happy.mp4" type="video/mp4" />
             </video>
           </div>
@@ -625,6 +678,8 @@ function App() {
               bgm0.pause();
               bgm2.play();
               setShowBingChilling(true);
+              glow(bingChillingContainer, 8200, 16000);
+              doubleboom(section15Ref, 44500);
               scrollToSection(section15Ref);
             }}
           >
@@ -645,6 +700,7 @@ function App() {
 
         <div className="w-fit max-w-full text-center">
           <div
+            ref={bingChillingContainer}
             className="bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
                         transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative flex gap-4"
           >
