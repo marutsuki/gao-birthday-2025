@@ -2,7 +2,7 @@ name: Deploy gao-birthday-2025 static content to GitHub Pages
 
 on:
   push:
-    branches: ['master']
+    branches: ['main']
 
   workflow_dispatch:
 
