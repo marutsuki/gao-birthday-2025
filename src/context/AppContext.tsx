@@ -26,6 +26,7 @@ const audioStore: AudioStore = {
   oh: new Audio("/oh.mp3"),
   micdrop: new Audio("/micdrop.mp3"),
   lipsmack: new Audio("/lipsmack.mp3"),
+  snowHalation: new Audio("/snow_halation.mp3"),
 };
 
 // Define the context type
@@ -43,6 +44,8 @@ interface AppContextType {
   setShowSusSection: React.Dispatch<React.SetStateAction<boolean>>;
   soldierMuted: boolean;
   setSoldierMuted: React.Dispatch<React.SetStateAction<boolean>>;
+  finalSectionStarted: boolean;
+  setFinalSectionStarted: React.Dispatch<React.SetStateAction<boolean>>;
 
   // Video refs
   vid1: React.RefObject<HTMLVideoElement | null>;
@@ -62,7 +65,7 @@ interface AppContextType {
 
   // Utility functions
   scrollToSection: (ref: React.RefObject<HTMLDivElement | null>) => void;
-  renderConfetti: (emoji: string) => React.ReactNode[];
+  renderConfetti: (emoji: string, count?: number) => React.ReactNode[];
   voicecrack: (
     ref: React.RefObject<HTMLDivElement | null>,
     timeout: number
@@ -111,6 +114,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const [showBingChilling, setShowBingChilling] = useState(false);
   const [showSusSection, setShowSusSection] = useState(false);
   const [soldierMuted, setSoldierMuted] = useState(false);
+  const [finalSectionStarted, setFinalSectionStarted] = useState(false);
 
   // Video refs
   const vid1 = useRef<HTMLVideoElement>(null);
@@ -122,8 +126,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   // Container refs
   const bingChillingContainer = useRef<HTMLDivElement>(null);
 
-  // Create an array of section refs (22 sections from 0 to 21)
-  const sectionRefs = useSectionRefs(24);
+  const sectionRefs = useSectionRefs(25);
 
   // Function to scroll to the next section
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
@@ -131,9 +134,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   // Generate random confetti elements
-  const renderConfetti = (emoji: string) => {
+  const renderConfetti = (emoji: string, count: number = 50) => {
     const confetti = [];
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < count; i++) {
       confetti.push(
         <div
           key={i}
@@ -238,6 +241,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     setShowSusSection,
     soldierMuted,
     setSoldierMuted,
+    finalSectionStarted,
+    setFinalSectionStarted,
 
     // Video refs
     vid1,

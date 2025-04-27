@@ -1,5 +1,6 @@
 import { FC, useRef } from "react";
 import MemorySection from "./MemorySection";
+import { useAppContext } from "../context/AppContext";
 
 const AmuroSection: FC = () => {
   const gundam = useRef<HTMLImageElement>(null);
@@ -9,6 +10,8 @@ const AmuroSection: FC = () => {
   const amuro3 = useRef<HTMLHeadingElement>(null);
   const amuro4 = useRef<HTMLHeadingElement>(null);
   const amuro5 = useRef<HTMLHeadingElement>(null);
+  const { audio, sectionRefs } = useAppContext();
+  const { curtain } = audio;
 
   const gundamFly = () => {
     if (gundam.current) {
@@ -110,7 +113,17 @@ const AmuroSection: FC = () => {
       title="OH NO AMURO"
       buttonText="More Memories"
       nextSectionIndex={23}
-      onButtonClick={() => {}}
+      onButtonClick={() => {
+        if (vid.current) {
+          vid.current.pause();
+        }
+        curtain?.play();
+        setTimeout(() => {
+          if (sectionRefs[23].current) {
+            sectionRefs[23].current.style.animation = "pulsate 0.769s infinite";
+          }
+        }, 1000);
+      }}
     >
       <img
         src="/gundam.png"
@@ -124,31 +137,31 @@ const AmuroSection: FC = () => {
       >
         <h2
           ref={amuro1}
-          className="text-4xl absolute left-1/4 top-1/4 opacity-0 rotate-12"
+          className="text-4xl absolute left-1/4 top-1/4 opacity-0 rotate-12 pointer-events-none"
         >
           NO AMURO
         </h2>
         <h2
           ref={amuro2}
-          className="text-4xl absolute left-3/4 top-1/2 opacity-0 -rotate-45"
+          className="text-4xl absolute left-3/4 top-1/2 opacity-0 -rotate-45 pointer-events-none"
         >
           AMURO
         </h2>
         <h2
           ref={amuro3}
-          className="text-4xl absolute left-2/12 top-7/12 opacity-0 rotate-45"
+          className="text-4xl absolute left-2/12 top-7/12 opacity-0 rotate-45 pointer-events-none"
         >
           OH NO AMURO 😫
         </h2>
 
         <h2
           ref={amuro4}
-          className="absolute left-2/12 top-1/2 z-0 max-h-96 opacity-0 text-4xl"
+          className="absolute left-2/12 top-1/2 z-0 max-h-96 opacity-0 text-4xl pointer-events-none"
         >
           GUNDAM
         </h2>
         <div
-          className="absolute left-2/12 top-1/2 z-0 max-h-96 opacity-0"
+          className="absolute left-2/12 top-1/2 z-0 max-h-96 opacity-0 pointer-events-none"
           ref={amuro5}
         >
           <img

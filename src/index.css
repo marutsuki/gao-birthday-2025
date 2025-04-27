@@ -17,6 +17,7 @@
 
   --color-neon-purple: #bb86fc;
   --color-neon-purple-faded: rgba(187, 134, 252, 0.8);
+  --color-neon-purple-faded-2: rgba(187, 134, 252, 0.4);
   --color-neon-blue: #3f51b5;
   --color-dark-bg: #121212;
   --color-dark-surface: #1a1a1a;
@@ -333,5 +334,14 @@
   }
   100% {
     transform: translate3d(30px, 75px, 0) rotate(10deg);
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    background: var(--color-neon-purple-faded-2);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0);
   }
 }

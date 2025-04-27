@@ -1,5 +1,6 @@
 import React from "react";
 import { useAppContext } from "../context/AppContext";
+import clsx from "clsx";
 
 interface HeroSectionProps {
   sectionIndex: number;
@@ -10,6 +11,7 @@ interface HeroSectionProps {
   backgroundImage?: string;
   onButtonClick?: () => void;
   children?: React.ReactNode;
+  className?: string;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
@@ -21,6 +23,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImage,
   onButtonClick,
   children,
+  className,
 }) => {
   const { sectionRefs, scrollToSection } = useAppContext();
 
@@ -40,7 +43,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section
       ref={sectionRefs[sectionIndex]}
-      className="min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4 bg-cover bg-center relative overflow-hidden"
+      className={clsx(
+        "min-h-screen flex flex-col justify-center items-center p-8 relative scroll-mt-4 bg-cover bg-center overflow-hidden",
+        className
+      )}
       style={backgroundStyle}
     >
       {/* Hero section overlay */}

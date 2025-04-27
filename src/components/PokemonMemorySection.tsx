@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import MemorySection from "./MemorySection";
 
 const PokemonMemorySection: React.FC = () => {
-  const { showForehead, setShowForehead, audio } = useAppContext();
+  const { audio } = useAppContext();
+
+  const [state, setState] = useState<"preview" | "full" | "secret">("preview");
 
   const { itsgao } = audio;
   const handleImageClick = () => {
     if (!itsgao) return;
-    itsgao.play();
-    setShowForehead(!showForehead);
+    setState((prev) =>
+      prev === "preview" ? "full" : prev === "full" ? "secret" : "preview"
+    );
   };
 
+  useEffect(() => {
+    if (state !== "full") return;
+    if (!itsgao) return;
+    itsgao.play();
+  }, [state, itsgao]);
   return (
     <MemorySection
       sectionIndex={9}
@@ -24,16 +32,7 @@ const PokemonMemorySection: React.FC = () => {
                  transition-all duration-300 hover:translate-y-[-5px] hover:shadow-neon relative"
         onClick={handleImageClick}
       >
-        {showForehead ? (
-          <div>
-            <img
-              src="/forehead.jpg"
-              className="max-w-full rounded-lg my-4 shadow-md max-h-96"
-              alt="Forehead"
-            />
-            <p>it's 4head gao</p>
-          </div>
-        ) : (
+        {state === "preview" ? (
           <div className="blur-lg cursor-pointer">
             <img
               src="/megamind.jpg"
@@ -41,6 +40,23 @@ const PokemonMemorySection: React.FC = () => {
               alt="Megamind"
             />
             <p>Click me</p>
+          </div>
+        ) : state === "full" ? (
+          <div>
+            <img
+              src="/forehead.jpg"
+              className="max-w-full rounded-lg my-4 shadow-md max-h-96 cursor-pointer"
+              alt="Forehead"
+            />
+            <p>it's 4head gao</p>
+          </div>
+        ) : (
+          <div>
+            <img
+              src="kim.jpg"
+              className="max-w-full rounded-lg my-4 shadow-md max-h-96 cursor-pointer"
+              alt="Kim"
+            />
           </div>
         )}
       </div>

@@ -1,7 +1,10 @@
 import { useState } from "react";
 import MemorySection from "./MemorySection";
+import { useAppContext } from "../context/AppContext";
 
 const ThankYouSection: React.FC = () => {
+  const { audio, setFinalSectionStarted } = useAppContext();
+  const { snowHalation } = audio;
   const [reveal, setReveal] = useState(false);
   return (
     <MemorySection
@@ -9,6 +12,12 @@ const ThankYouSection: React.FC = () => {
       title="Thank You"
       buttonText="Finally..."
       nextSectionIndex={24}
+      onButtonClick={() => {
+        setTimeout(() => {
+          snowHalation?.play();
+        }, 1179);
+        setFinalSectionStarted(true);
+      }}
     >
       <div
         onClick={() => setReveal(!reveal)}
@@ -29,7 +38,7 @@ const ThankYouSection: React.FC = () => {
           <br />
           <br />
           You're hitting your ojisan phase now and halfway to 30. Take care of
-          your health finish your bubble tea for once.
+          your health and finish your bubble tea for once.
           <br />
           <br />
           Here's to many more years of friendship, laughter, and adventures.
