@@ -4,8 +4,14 @@ import MemorySection from "./MemorySection";
 
 const SoldierSection: React.FC = () => {
   const { soldierVid, soldierMuted, setSoldierMuted, audio } = useAppContext();
-
   const { soldier } = audio;
+
+  const handleButtonClick = () => {
+    if (soldierVid.current) {
+      soldierVid.current.pause();
+    }
+  };
+
   const handleVideoPlay = () => {
     setTimeout(() => {
       if (!soldier) return;
@@ -22,6 +28,7 @@ const SoldierSection: React.FC = () => {
       title=""
       buttonText="More Memories"
       nextSectionIndex={20}
+      onButtonClick={handleButtonClick}
     >
       <div className="overflow-hidden w-fit max-w-full text-center">
         <video

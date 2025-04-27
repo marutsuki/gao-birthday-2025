@@ -25,6 +25,7 @@ const audioStore: AudioStore = {
   nippon: new Audio("/nippon.mp3"),
   oh: new Audio("/oh.mp3"),
   micdrop: new Audio("/micdrop.mp3"),
+  lipsmack: new Audio("/lipsmack.mp3"),
 };
 
 // Define the context type

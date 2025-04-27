@@ -49,11 +49,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="relative z-20 w-fit max-w-full text-center">
         <h1 className="text-4xl md:text-6xl mb-4">{title}</h1>
         {subtitle && (
-          <p className="text-xl md:text-2xl mb-8 text-neon-purple">{subtitle}</p>
+          <p className="text-xl md:text-2xl mb-8 text-neon-purple">
+            {subtitle}
+          </p>
         )}
         {children}
         <button
-          className="mt-8 bg-neon-gradient text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
+          className="mt-8 bg-linear-90 from-[#9c27b0] to-[#3f51b5] text-white border-none py-3 px-6 rounded-full font-bold cursor-pointer
                    shadow-neon transition-all duration-300 hover:translate-y-[-3px] hover:shadow-neon-hover"
           onClick={handleButtonClick}
         >

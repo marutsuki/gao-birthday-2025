@@ -47,12 +47,16 @@
 @keyframes blur {
   0% {
     filter: blur(0px);
+    transform: scale(1.5);
   }
   50% {
     filter: blur(100px);
+    transform: scale(1);
   }
   100% {
     filter: blur(0px);
+    transform: scale(1.5);
+
   }
 }
 

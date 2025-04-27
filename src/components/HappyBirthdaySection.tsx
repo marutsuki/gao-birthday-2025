@@ -21,8 +21,9 @@ const HappyBirthdaySection: React.FC = () => {
     if (!bgm0 || !bgm2) return;
     bgm0.pause();
     bgm2.play();
+    happyvid.current?.pause();
     setShowBingChilling(true);
-    glow(bingChillingContainer, 8750, 15900);
+    glow(bingChillingContainer, 8750, 16000);
     doubleboom(sectionRefs[15], 44500);
   };
 

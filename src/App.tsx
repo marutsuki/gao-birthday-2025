@@ -1,4 +1,3 @@
-import React from "react";
 import "./index.css";
 import { AppProvider } from "./context/AppContext";
 import IntroSection from "./components/IntroSection";
@@ -23,6 +22,8 @@ import MortalKombatSection from "./components/MortalKombatSection";
 import SoldierSection from "./components/SoldierSection";
 import Footer from "./components/Footer";
 import RoastSection from "./components/RoastSection";
+import MouthSection from "./components/MouthSection";
+import ThankYouSection from "./components/ThankYouSection";
 
 function App() {
   return (
@@ -49,6 +50,8 @@ function App() {
         <MortalKombatSection />
         <SoldierSection />
         <RoastSection />
+        <MouthSection />
+        <ThankYouSection />
         <Footer />
       </div>
     </AppProvider>

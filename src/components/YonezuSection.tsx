@@ -5,10 +5,12 @@ import MemorySection from "./MemorySection";
 const YonezuSection: React.FC = () => {
   const { audio } = useAppContext();
 
-  const { bgm4 } = audio;
+  const { bgm3, bgm4 } = audio;
   const handleButtonClick = () => {
     if (!bgm4) return;
     bgm4.play();
+    if (!bgm3) return;
+    bgm3.pause();
   };
 
   return (

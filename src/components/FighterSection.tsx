@@ -1,13 +1,22 @@
 import React from "react";
 import MemorySection from "./MemorySection";
+import { useAppContext } from "../context/AppContext";
 
 const FighterSection: React.FC = () => {
+  const { audio } = useAppContext();
+  const { bgm4 } = audio;
+  const handleButtonClick = () => {
+    if (!bgm4) return;
+    bgm4.pause();
+  };
+
   return (
     <MemorySection
       sectionIndex={17}
       title=""
       buttonText="More Memories"
       nextSectionIndex={18}
+      onButtonClick={handleButtonClick}
     >
       <div
         className="bg-[url('/bg.png')] rounded-lg p-8 my-4 shadow-lg border border-purple-500/30
