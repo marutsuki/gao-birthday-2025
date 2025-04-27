@@ -5,10 +5,10 @@ const ThankYouSection: React.FC = () => {
   const [reveal, setReveal] = useState(false);
   return (
     <MemorySection
-      sectionIndex={22}
+      sectionIndex={23}
       title="Thank You"
       buttonText="Finally..."
-      nextSectionIndex={23}
+      nextSectionIndex={24}
     >
       <div
         onClick={() => setReveal(!reveal)}

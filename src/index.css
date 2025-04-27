@@ -317,3 +317,21 @@
     transform: scale(1) rotate(360deg);
   }
 }
+
+@keyframes gundam-hit {
+  0% {
+    transform: translate3d(50px, 25px, 0) rotate(20deg);
+  }
+  49% {
+    transform: translate3d(50px, 25px, 0) rotate(20deg);
+  }
+  50% {
+    transform: translate3d(-50px, 50px, 0) rotate(-20deg);
+  }
+  99% {
+    transform: translate3d(-50px, 50px, 0) rotate(-20deg);
+  }
+  100% {
+    transform: translate3d(30px, 75px, 0) rotate(10deg);
+  }
+}

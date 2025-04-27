@@ -123,7 +123,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const bingChillingContainer = useRef<HTMLDivElement>(null);
 
   // Create an array of section refs (22 sections from 0 to 21)
-  const sectionRefs = useSectionRefs(22);
+  const sectionRefs = useSectionRefs(24);
 
   // Function to scroll to the next section
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {

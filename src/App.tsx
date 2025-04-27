@@ -24,6 +24,7 @@ import Footer from "./components/Footer";
 import RoastSection from "./components/RoastSection";
 import MouthSection from "./components/MouthSection";
 import ThankYouSection from "./components/ThankYouSection";
+import AmuroSection from "./components/AmuroSection";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
         <SoldierSection />
         <RoastSection />
         <MouthSection />
+        <AmuroSection />
         <ThankYouSection />
         <Footer />
       </div>
