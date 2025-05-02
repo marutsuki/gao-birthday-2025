@@ -3,21 +3,12 @@ import { useAppContext } from "../context/AppContext";
 import MemorySection from "./MemorySection";
 
 const CheekyMemorySection: React.FC = () => {
-  const { audio } = useAppContext();
-
-  const { seat } = audio;
-  const handleButtonClick = () => {
-    if (!seat) return;
-    seat.play();
-  };
-
   return (
     <MemorySection
       sectionIndex={12}
       title="😏 part 2"
       buttonText="More Memories"
       nextSectionIndex={13}
-      onButtonClick={handleButtonClick}
     >
       <div
         className="bg-dark-surface/70 rounded-lg p-8 my-4 shadow-lg border border-purple-500/30

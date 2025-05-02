@@ -4,7 +4,7 @@ import { useAppContext } from "../context/AppContext";
 
 const ThankYouSection: React.FC = () => {
   const { audio, setFinalSectionStarted } = useAppContext();
-  const { snowHalation } = audio;
+  const { snowHalation, curtain } = audio;
   const [reveal, setReveal] = useState(false);
   return (
     <MemorySection
@@ -14,6 +14,7 @@ const ThankYouSection: React.FC = () => {
       nextSectionIndex={24}
       onButtonClick={() => {
         setTimeout(() => {
+          curtain?.pause();
           snowHalation?.play();
         }, 1179);
         setFinalSectionStarted(true);

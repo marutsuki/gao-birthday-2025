@@ -97,7 +97,8 @@ const HappyBirthday: FC = () => {
       {renderConfetti("Kevin", 25)}
       {renderConfetti("Gao", 25)}
 
-      <h2>and</h2>
+      <h1 className="text-7xl mt-16">Happy Birthday !!!</h1>
+      <h2 className="mt-4">and</h2>
       <h1 className="text-4xl">Welcome Back Home !!!</h1>
     </HeroSection>
   );

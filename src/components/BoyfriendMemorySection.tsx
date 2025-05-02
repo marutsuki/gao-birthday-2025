@@ -12,6 +12,13 @@ const BoyfriendMemorySection: React.FC = () => {
     pokemon.play();
   };
 
+  const { seat } = audio;
+
+  const reveal = () => {
+    if (!seat) return;
+    seat.play();
+  };
+
   return (
     <MemorySection
       sectionIndex={8}
@@ -39,7 +46,10 @@ const BoyfriendMemorySection: React.FC = () => {
           <button
             className="rounded-lg border border-transparent px-5 py-2.5 text-base font-medium 
                          bg-dark-surface cursor-pointer transition-all duration-250 relative overflow-hidden"
-            onClick={() => setRevealJoke2(true)}
+            onClick={() => {
+              setRevealJoke2(true);
+              reveal();
+            }}
           >
             <img
               src="/kevin.jpg"
