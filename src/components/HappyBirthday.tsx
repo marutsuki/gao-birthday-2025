@@ -69,8 +69,8 @@ const HappyBirthday: FC = () => {
       sectionIndex={24}
       nextSectionIndex={0}
       buttonText="Back to Top"
-      title="Happy Birthday Kevin!!!"
-      subtitle="From your one and only Lucien, and all the boys."
+      title="Our memories"
+      subtitle="Just a glimpse."
       className="py-48"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-24 w-full max-w-6xl mx-auto">
@@ -96,8 +96,15 @@ const HappyBirthday: FC = () => {
       {renderConfetti("❄️")}
       {renderConfetti("Kevin", 25)}
       {renderConfetti("Gao", 25)}
+      {renderConfetti("Your seat is over there", 10)}
+      {renderConfetti("Ikimasu", 10)}
 
-      <h1 className="text-7xl mt-16">Happy Birthday !!!</h1>
+      <h1 className="text-7xl mt-16 text-shadow-neon animate-bounce">
+        Happy Birthday Kevin!!!
+      </h1>
+      <h2 className="mt-4 text-2xl text-neon-purple">
+        From your one and only Lucien, and all the boys.
+      </h2>
       <h2 className="mt-4">and</h2>
       <h1 className="text-4xl">Welcome Back Home !!!</h1>
     </HeroSection>
