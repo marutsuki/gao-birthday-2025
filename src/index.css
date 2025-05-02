@@ -33,6 +33,8 @@
   --animate-blur: blur 1s linear infinite;
   --animate-glow : glow 2s linear infinite;
 
+  --animate-pulsate-opacity: pulsate-opacity 5s linear infinite;
+
   --text-shadow-neon:
     0 0 7px #fff,
     0 0 10px #fff,
@@ -42,6 +44,16 @@
     0 0 92px #0fa,
     0 0 102px #0fa,
     0 0 151px #0fa;
+
+  --shadow-neon-glow:
+    0 0 7px 10px #fff,
+    0 0 21px 20px #fff,
+    0 0 42px 30px #fff,
+    0 0 84px 40px #d356ff,
+    0 0 168px 50px #d356ff,
+    0 0 184px 60px #d356ff,
+    0 0 204px 70px #d356ff,
+    0 0 302px 80px #d356ff;
 }
 
 @keyframes fall {
@@ -353,5 +365,17 @@
   }
   100% {
     background: rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes pulsate-opacity {
+  0% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
   }
 }

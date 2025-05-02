@@ -32,7 +32,6 @@ const MemorySection: React.FC<MemorySectionProps> = ({
 
   return (
     <>
-      <div className="w-full h-[3px] bg-neon-gradient m-0 shadow-neon"></div>
       <section
         ref={sectionRefs[sectionIndex]}
         className={clsx(
@@ -40,6 +39,8 @@ const MemorySection: React.FC<MemorySectionProps> = ({
           className
         )}
       >
+        <div className="absolute -top-0 left-0 -bottom-0 shadow-neon-glow animate-pulsate-opacity" />
+        <div className="absolute -top-0 right-0 -bottom-0 shadow-neon-glow animate-pulsate-opacity" />
         <div className="w-fit max-w-full text-center">
           <h2 className="text-xl">{title}</h2>
           {children}

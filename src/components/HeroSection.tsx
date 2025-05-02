@@ -49,8 +49,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       )}
       style={backgroundStyle}
     >
-      {/* Hero section overlay */}
-      <div className="absolute inset-0 bg-neon-gradient/20 z-10"></div>
+      <div className="absolute -top-0 left-0 -bottom-0 shadow-neon-glow animate-pulsate-opacity" />
+      <div className="absolute -top-0 right-0 -bottom-0 shadow-neon-glow animate-pulsate-opacity" />
 
       <div className="relative z-20 w-fit max-w-full text-center">
         <h1 className="text-4xl md:text-6xl mb-4">{title}</h1>
